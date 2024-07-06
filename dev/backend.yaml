@@ -17,6 +17,8 @@ env:
 schemaJob:
   enabled: true
 
+ingress:
+  enabled: false
 
 
 

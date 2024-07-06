@@ -1,7 +1,7 @@
 appName: frontend
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   port: 80
 
 replicas: 1
@@ -9,3 +9,9 @@ env: {}
 
 schemaJob:
   enabled: false
+
+ingress:
+  enabled: true
+  name: frontend-dev.rdevopsb79.online
+
+
