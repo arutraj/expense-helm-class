@@ -5,4 +5,9 @@ ARGO_PASSWORD=$(kubectl get secrets -n argocd argocd-initial-admin-secret -o jso
 
 argocd login $ARGO_URL --username admin --password $ARGO_PASSWORD --grpc-web
 
-argocd app create ${2} --repo https://github.com/raghudevopsb79/expense-helm --path . --dest-namespace default --dest-server https://kubernetes.default.svc --values ${1}/${2}.yaml --sync-policy auto --grpc-web
+argocd app list | grep "argocd/${2}"
+if [ $? -ne 0 ]; then
+  argocd app create ${2} --repo https://github.com/raghudevopsb79/expense-helm --path . --dest-namespace default --dest-server https://kubernetes.default.svc --values ${1}/${2}.yaml --sync-policy auto --grpc-web
+  argocd app wait backend
+fi
+
