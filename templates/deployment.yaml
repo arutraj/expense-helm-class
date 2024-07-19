@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: {{ .Values.appName }}
-        image: docker.io/rkalluru/d79-{{ .Values.appName }}
+        image: 739561048503.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.appName }}:{{ .Values.imageTag }}
         envFrom:
         - configMapRef:
             name: {{ .Values.appName }}
