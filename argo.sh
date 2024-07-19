@@ -1,3 +1,4 @@
+aws eks update-kubeconfig --name dev-eks
 #ARGO_URL=$(kubectl get svc argocd-server -n argocd| grep argocd-server | awk '{print $4}')
 ARGO_URL=argocd-${1}.rdevopsb79.online
 ARGO_PASSWORD=$(kubectl get secrets -n argocd argocd-initial-admin-secret -o json  | jq '.data.password' | xargs | base64 --decode)
